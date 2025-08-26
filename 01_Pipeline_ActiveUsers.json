@@ -1,7 +1,7 @@
 
 
 [
-  _comment: "How many active uers are there currently? "
+  _comment: "How many active uers are there currently? ", 
   {
     $match: {
       isActive: true,
