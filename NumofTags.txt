@@ -1,0 +1,27 @@
+Avg number of tags per user
+
+[
+  {$unwind:
+    {
+      path: "$tags"
+    }
+  },
+
+  {
+    $group: 
+      {
+        _id: "$_id",
+        numOfTags: {$sum: 1}
+      }
+  }, 
+
+  {
+		$group: 
+      {
+        _id: null,
+        avgNoTags: {$avg: "$numOfTags"}
+      }
+    
+  }
+
+]
