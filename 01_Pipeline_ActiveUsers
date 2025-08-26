@@ -1,0 +1,12 @@
+-- How many active uers are there currently? 
+
+[
+  {
+    $match: {
+      isActive: true,
+    },
+  },
+  {
+    $count: "ActiveUsers",
+  },
+]
