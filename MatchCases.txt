@@ -1,0 +1,32 @@
+Show name and age of inactive users with velit tag.
+
+[
+  {$match: 
+  	{
+    isActive: false, 
+    tags: "velit"
+    }
+  }, 
+
+  {
+    $project: {  //shows only whats selected
+    name: 1, 
+      age: 1, 
+       isActive: 1 
+    }
+  }
+]
+
+People with numbers starting with "+1 (940) "
+
+[
+  {
+    $match: {
+     "company.phone": /^\+1 \(940\)/   //regex value
+    }
+  }, 
+
+  {
+   $count: 'US numbers' 
+  }
+]
