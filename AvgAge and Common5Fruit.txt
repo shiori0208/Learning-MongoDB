@@ -1,0 +1,31 @@
+Find AVG age of all users 
+
+[
+  {
+    
+    $group: 
+    {
+      _id: null,
+      avgAge: {$avg: "$age"}
+    }
+  }
+]
+
+List top 5 fav fruits 
+
+[
+  {
+    $group: {
+      _id: "$favoriteFruit",
+      count: {$sum: 1} //incrementing like for loop
+    },
+  },
+
+  {
+    $sort: {
+      count: -1
+    }
+  }, 
+
+  {$limit: 5}
+]

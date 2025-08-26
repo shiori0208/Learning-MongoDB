@@ -1,0 +1,27 @@
+Total num of each gender:
+
+[
+  {
+    $group: {
+      _id: "$gender",
+      count: {$sum: 1}
+    }
+  }
+]
+
+Highest no of registered users in WHICH country?
+
+[
+  {
+    $group: {
+      _id: "$company.location.country", //drilling down data
+      count: {$sum: 1}
+    }
+  },
+  {
+    $sort: {count: -1}
+  },
+  {
+    $limit: 1
+  }
+]
