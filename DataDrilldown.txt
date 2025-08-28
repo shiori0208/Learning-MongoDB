@@ -1,0 +1,49 @@
+Users with tag "ad" in the 1st position of the array tags 
+
+[
+  {
+    $match: {
+      "tags.1" : "ad"
+    }
+  },
+
+  {
+    $count: 'AdUsers'
+  }
+]
+
+
+Users with both enim and id tags 
+
+  {
+   $match: {
+     tags: {
+       $all: ["enim", "id"] //matches all mentioned values
+     }
+   } 
+  },
+
+  {
+    $project: {
+      name:1, tags:1
+    }
+  }
+]
+
+Users with company in US grouped by company names 
+
+[
+  {
+    $match: {
+      "company.location.country": "USA"
+    }
+  },
+
+  {
+    $group: {
+      _id: "$company.title", 
+      userCount: {$sum: 1}
+      
+    }
+  }
+]
