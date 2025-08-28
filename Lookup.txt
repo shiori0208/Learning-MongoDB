@@ -1,0 +1,17 @@
+[
+  {
+    $lookup: {
+      from: "Authors",  //other collection
+      localField: "author_id",  //local for other 
+      foreignField: "_id", //of current collection
+      as: "author_details"
+    }
+  }, 
+  {
+    $addFields: {
+      author_details: {
+        $arrayElemAt: ["$author_details", 0] //find element in array 
+      }
+    }
+  }
+]
